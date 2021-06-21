@@ -14,6 +14,18 @@ router.post('/', admin , async(req, res) => {
     }
 });
 
+// Endpoint de Perfil de un usuario -> GET
+router.post('/profile', authenticate, async(req, res) => {
+    try {
+        const id = req.body.userId;
+        res.json(await userController.findUser(id))
+    } catch (err) {
+        return res.status(500).json({
+            message: err.message
+        });
+    }
+});
+
 // Endpoint de Alta de Usuario (C) -> POST
 router.post('/create', async(req, res) => {
     try {

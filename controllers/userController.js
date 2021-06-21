@@ -32,6 +32,12 @@ class Client {
         )
     }
 
+    async findUser (id) {
+        return User.findOne(
+            {where: {id: id}}
+        );
+    }
+
     async deleteUser(bodyData){
         return User.destroy({where: {id: bodyData.userId}});
     }
