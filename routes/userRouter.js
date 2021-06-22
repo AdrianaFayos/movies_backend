@@ -51,6 +51,30 @@ router.put('/', authenticate, async (req,res) => {
     }
 })
 
+// Endpoint de Modificación de contraseña (U) -> UPDATE
+router.put('/password', authenticate, async (req,res) => {
+    try{
+        const bodyData = req.body;
+        res.json(await userController.modifyPassword(bodyData)); 
+    }catch (err) {
+        return res.status(500).json({
+            message: err.message
+        });
+    }
+})
+
+// Endpoint de Modificación de suscripcion (U) -> UPDATE
+router.put('/subscription', authenticate, async (req,res) => {
+    try{
+        const body = req.body;
+        res.json(await userController.modifySubscription(body)); 
+    }catch (err) {
+        return res.status(500).json({
+            message: err.message
+        });
+    }
+})
+
 // Endpoint de Baja de Usuario (D) -> Delete
 router.delete('/', authenticate, async (req, res) => {
     try {

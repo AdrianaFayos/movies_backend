@@ -24,11 +24,56 @@ class Client {
     }
 
     async modifyUser(bodyData){
-        return User.update(
+        let user = await User.update(
             //Datos que cambiamos..
-            {email: bodyData.email, adress: bodyData.adress},
+            {firstname: bodyData.firstname, 
+            lastname: bodyData.lastname,
+            phone: bodyData.phone,
+            email: bodyData.email, 
+            adress: bodyData.adress},
             //Donde...
-            {where: {id: bodyData.userId}}
+            {where: {id: bodyData.userId}})
+
+        return User.findOne({
+            where: {id : bodyData.userId}
+        });
+    }
+
+    async modifyPassword (body) {
+
+        let user = await userController.findUser(body.userId);
+
+        let oldPassword = body.oldPassword;
+
+        let password = user.password;
+
+        console.log( oldPassword, password)
+
+        let verify = await bcrypt.compare(oldPassword, password);
+       
+        if(!verify){
+         throw new Error('Wrong user or password');
+        }
+
+        let newPassword = bcrypt.hashSync( body.newPassword, 10);
+
+        let updatepassword = await User.update(
+            {password: newPassword},
+            //Donde...
+            {where: {id: body.userId}}
+        )
+
+        return User.findOne({
+            where: {id : body.userId}
+        });
+
+    }
+
+    async modifySubscription(body){
+        return User.update(
+            {subscription: body.subscription},
+            //Donde...
+            {where: {id: body.userId}}
         )
     }
 
