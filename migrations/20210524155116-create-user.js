@@ -9,25 +9,32 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       firstname: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        required: true
       },
       lastname: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        required: true
       },
       email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        required: true,
+        unique: true
       },
       password: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        required: true
       },
       isAdmin: {
         type: Sequelize.BOOLEAN
       },
       phone: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        required: true
       },
       birthday: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        required: true
       },
       subscription: {
         type: Sequelize.BOOLEAN

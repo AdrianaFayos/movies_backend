@@ -86,6 +86,24 @@ class Client {
     async deleteUser(bodyData){
         return User.destroy({where: {id: bodyData.userId}});
     }
+
+    async isAdminUpdate(body){
+
+        let user = await userController.findUser(body.userId);
+
+        if (user.isAdmin === true) {
+            return User.update(
+                {isAdmin: false},
+                {where: {id: body.userId}}
+            )
+        } else if (user.isAdmin === false) {
+            return User.update(
+                {isAdmin: true},
+                {where: {id: body.userId}}
+            )
+        }
+
+    }
 }
 
 let userController = new Client();

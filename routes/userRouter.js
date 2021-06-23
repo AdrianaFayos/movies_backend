@@ -4,7 +4,7 @@ const authenticate = require('../middleware/authenticate');
 const admin = require('../middleware/admin')
 
 // Endpoint de Perfil (R) -> GET
-router.post('/', admin , async(req, res) => {
+router.get('/', admin , async(req, res) => {
     try {
         res.json(await userController.findAllUsers())
     } catch (err) {
@@ -76,7 +76,7 @@ router.put('/subscription', authenticate, async (req,res) => {
 })
 
 // Endpoint de Baja de Usuario (D) -> Delete
-router.delete('/', authenticate, async (req, res) => {
+router.post('/deleteuser', admin, async (req, res) => {
     try {
         const bodyData = req.body;
         res.json(await userController.deleteUser(bodyData))
@@ -86,5 +86,32 @@ router.delete('/', authenticate, async (req, res) => {
         });
     }
 })
+
+// Endpoint de Baja de Usuario (D) -> Delete
+router.post('/delete', authenticate, async (req, res) => {
+    try {
+        const bodyData = req.body;
+        res.json(await userController.deleteUser(bodyData))
+    } catch (err) {
+        return res.status(500).json({
+            message: err.message
+        });
+    }
+})
+
+// Endpoint de Actualiza el dato is Admin (D) -> Delete
+router.post('/isadminupdate', admin, async (req, res) => {
+    try {
+        const bodyData = req.body;
+        res.json(await userController.isAdminUpdate(bodyData))
+    } catch (err) {
+        return res.status(500).json({
+            message: err.message
+        });
+    }
+})
+
+
+
 
 module.exports = router;
