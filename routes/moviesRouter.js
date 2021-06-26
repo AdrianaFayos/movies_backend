@@ -14,6 +14,16 @@ router.get('/toprated', async (req,res) => {
     }
 });
 
+router.get('/upcoming', async (req,res) => {
+    try{
+        res.json(await moviesController.findUpcoming());
+    }catch (err) {
+        return res.status(500).json({
+            message: err.message
+        });
+    }
+});
+
 router.get('/searchid/:id', async (req,res) => {
     try {
         let id = req.params.id;

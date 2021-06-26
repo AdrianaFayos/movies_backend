@@ -60,7 +60,7 @@ router.put('/', authenticate, async (req,res) => {
 }
 });
 
-router.delete('/', authenticate, async (req,res) => {
+router.post('/delete', authenticate, async (req,res) => {
     try {
         const bodyData = req.body;
         res.json(await orderController.deleteOrder(bodyData))
