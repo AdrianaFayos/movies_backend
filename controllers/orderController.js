@@ -13,6 +13,15 @@ class Orderissue {
     }
 
     async createOrder(body) {
+
+        let order = await Order.findOne(
+            {where: {movieId: body.movieId}}
+        )
+
+        if (order != null) {
+            throw new Error('You already have this movie');
+        }
+
         return Order.create(body);
     }
 
