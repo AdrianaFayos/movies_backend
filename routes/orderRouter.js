@@ -38,6 +38,17 @@ router.post('/findbyuser', authenticate, async (req, res) => {
     }
 });
 
+router.post('/findbymovie', authenticate, async (req, res) => {
+    try {
+        let bodyData = req.body;
+        res.json(await orderController.findOrderByMovieId(bodyData))
+    }catch (err) {
+        return res.status(500).json({
+            message: err.message
+        });
+    }
+});
+
 router.post('/create', authenticate, async (req,res) => {
     try {
         const body = req.body;

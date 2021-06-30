@@ -12,10 +12,18 @@ class Orderissue {
           );
     }
 
+    async findOrderByMovieId(bodyData) {
+        return Order.findAll(
+            {where: {movieId: bodyData.movieId
+            , userId: bodyData.userId}}
+          );
+    }
+
     async createOrder(body) {
 
         let order = await Order.findOne(
-            {where: {movieId: body.movieId}}
+            {where: {movieId: body.movieId
+            , userId: body.userId}}
         )
 
         if (order != null) {
