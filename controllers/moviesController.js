@@ -51,6 +51,13 @@ class Movies {
         return res.data;
     }
 
+    async playTrailer(movieId){
+        let res = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=210d6a5dd3f16419ce349c9f1b200d6d&language=en-US`)
+        let trailer = "https://www.youtube.com/watch?v=" + res.data.results[0].key;
+    
+        return trailer;
+    }
+
 }
 
 let moviesController = new Movies();

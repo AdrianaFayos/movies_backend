@@ -68,7 +68,16 @@ router.get('/actors/:name', async (req,res) => {
     }
 });
 
-
+router.post("/play", async (req, res) => {
+    try {
+      let movieId = req.body.movieId;
+      res.json(await moviesController.playTrailer(movieId));
+    } catch (err) {
+      return res.status(500).json({
+        mensaje: err.mensaje,
+      });
+    }
+  });
 
 
 module.exports = router;
