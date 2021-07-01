@@ -1,19 +1,14 @@
 <h1 align="center">
-  <br>🎥 Backend Movie Finder 🎥
+  <br>🍿 POP'S TV BACKEND 🍿
 </h1>
 
 ---
 
 Challenge from the Fullstack Developer Bootcamp at <a href="https://geekshubsacademy.com/">GeeksHubs Academy</a> where we have to recreate the backend of a rental movie application.
 
-This Project has been done by [Guillermo Raez](https://github.com/GuillermoRaez) and [Adriana Fayos](https://github.com/AdrianaFayos).
+This project has been modified from the following [repository](https://github.com/GuillermoRaez/Backend_RentalMoviesAndTVShows).
 
-Starting date: May 19th 2021. <br>
-Due date: May 30th 2021.
-
-We have used the Trello tool in order to share the tasks and to have a better organization.
-
-<img src="img/trello.png" width="1500">
+I have adapted it to the POP'S TV frontend project that you could find by [clicking here](https://github.com/AdrianaFayos/movies_frontend). 
 
 
 ## Instructions 🔧
@@ -44,10 +39,12 @@ Finally, enter the endpoints petitions in Postman and send them.
 
 - Movies
    - GET /movies/toprated --> Shows the Top Rated Movies.
+   - GET /movies/upcoming --> Shows the Upcoming Movies.
    - GET /movies/searchid/:id --> Shows Movies by their id.
    - GET /movies/search/:title --> Shows Movies by title.
    - GET /movies/genre/:name --> Shows Movies by genre.
    - GET /movies/actors/:name --> Shows Movies by cast members.
+   - POST /movies/play --> Returns de trailer of a movie.
 
 <br>
 
@@ -65,14 +62,20 @@ Finally, enter the endpoints petitions in Postman and send them.
 
 - Users
    - POST /users --> Shows the registered users (token admin needed).
+   - POST /users/profile --> Shows the user profile (token login needed).
    - POST /users/create --> Generates a new user and encrypts its password.
    - PUT /users --> Modify the users attributes (token login needed).
-   - DELETE /users --> Delete the user by id (token login needed). 
+   - PUT /users/password --> Modify the user's password (token login needed).
+   - PUT /users/isadminupdate --> Modify if the user is admin or not (token admin needed).
+   - DELETE /users/deleteuser --> Delete the user by id (token login needed). 
+    - DELETE /users/delete--> Delete the user by id (token admin needed). 
 <br>
 
 - Orders
    - POST /orders -->  Shows all the orders (token admin needed).
-   - POST /orders/findbyid --> Shows all the orders by the userId (token login needed).
+   - POST /orders/findbyid --> Shows all the orders by the userId (token admin needed).
+   - POST /orders/findbyuser --> Shows all the orders by the userId (token login needed).
+   - POST /orders/findbymovie --> Shows the orders by the userId and one movie (token login needed).
    - POST /orders/create --> Creates a new order (token login needed).
    - PUT /orders --> Modify the order attributes (token login needed).
    - DELETE /orders --> Deletes an order (token login needed). 
