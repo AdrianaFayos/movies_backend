@@ -6,7 +6,7 @@
 
 Challenge from the Fullstack Developer Bootcamp at <a href="https://geekshubsacademy.com/">GeeksHubs Academy</a> where we have to recreate the backend of a rental movie application.
 
-This project has been modified from the following [repository](https://github.com/GuillermoRaez/Backend_RentalMoviesAndTVShows).
+This code has been modified from the following [repository](https://github.com/GuillermoRaez/Backend_RentalMoviesAndTVShows) where you could find a previous project done with [Guillermo Raez](https://github.com/GuillermoRaez).
 
 I have adapted it to the POP'S TV frontend project that you could find by [clicking here](https://github.com/AdrianaFayos/movies_frontend). 
 
@@ -40,6 +40,7 @@ Finally, enter the endpoints petitions in Postman and send them.
 - Movies
    - GET /movies/toprated --> Shows the Top Rated Movies.
    - GET /movies/upcoming --> Shows the Upcoming Movies.
+   - GET /movies/popular --> Shows the Popular Movies.
    - GET /movies/searchid/:id --> Shows Movies by their id.
    - GET /movies/search/:title --> Shows Movies by title.
    - GET /movies/genre/:name --> Shows Movies by genre.
