@@ -81,7 +81,7 @@ Finally, enter the endpoints petitions in Postman and send them.
    - PUT /orders --> Modify the order attributes (token login needed).
    - DELETE /orders --> Deletes an order (token login needed). 
    - PUT /orders/admin --> Allows the admin to modify the order attributes (token admin needed).
-   - DELETE /orders/admin --> Allows the admin to delete an order (token admin needed). 
+   - DELETE /orders/deletebyadmin --> Allows the admin to delete an order (token admin needed). 
 
 
 ## Models relation

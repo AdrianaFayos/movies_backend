@@ -70,6 +70,7 @@ class Client {
     }
 
     async modifySubscription(body){
+        
         return User.update(
             {subscription: body.subscription},
             //Donde...
@@ -84,19 +85,21 @@ class Client {
     }
 
     async deleteUser(bodyData){
+        if(bodyData.userId != 1){
         return User.destroy({where: {id: bodyData.userId}});
+        }
     }
 
     async isAdminUpdate(body){
 
         let user = await userController.findUser(body.userId);
 
-        if (user.isAdmin === true) {
+        if (user.isAdmin === true && user.id != 1) {
             return User.update(
                 {isAdmin: false},
                 {where: {id: body.userId}}
             )
-        } else if (user.isAdmin === false) {
+        } else if (user.isAdmin === false && user.id != 1) {
             return User.update(
                 {isAdmin: true},
                 {where: {id: body.userId}}

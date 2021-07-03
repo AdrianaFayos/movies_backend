@@ -93,7 +93,7 @@ router.put('/admin', admin, async (req,res) => {
 }
 });
 
-router.delete('/admin', admin, async (req,res) => {
+router.post('/deletebyadmin', admin, async (req,res) => {
     try {
         const bodyData = req.body;
         res.json(await orderController.deleteOrder(bodyData))
