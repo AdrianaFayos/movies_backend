@@ -9,7 +9,7 @@ class Client {
 
     async signUpUser(body){
 
-        // body.isAdmin = false;
+        body.isAdmin = false;
         body.subscription = true;
 
         // El siguiente código encripta la contraseña
