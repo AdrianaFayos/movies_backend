@@ -26,12 +26,6 @@ module.exports = {
       moviePoster: {
         type: Sequelize.STRING
       },
-      rentedDate: {
-        type: Sequelize.DATE
-      },
-      returnDate: {
-        type: Sequelize.DATE
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

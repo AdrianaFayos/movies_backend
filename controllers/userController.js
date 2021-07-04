@@ -8,7 +8,10 @@ class Client {
     }
 
     async signUpUser(body){
-    
+
+        body.isAdmin = false;
+        body.subscription = true;
+
         // El siguiente código encripta la contraseña
         let password = body.password;
         let passwordHashed = bcrypt.hashSync(password, 10);
