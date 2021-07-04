@@ -13,6 +13,6 @@ app.use(router);
 db
 .then(()=>{
 
-    app.listen(port, () => console.log(`Node server running on http://localhost:${port}`));
+    app.listen(port, () => console.log(`Node server running on https://git.heroku.com/afp-popstv-b.git`));
 })
 .catch((err)=> console.log(err.message));

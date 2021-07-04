@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const secret = "Guillermo & Adriana Rental Movies";
+const secret = "Adriana Rental Movies";
 
 const admin = (req,res,next) => {
 
