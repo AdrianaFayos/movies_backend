@@ -14,6 +14,27 @@ router.get('/toprated', async (req,res) => {
     }
 });
 
+router.get('/upcoming', async (req,res) => {
+    try{
+        res.json(await moviesController.findUpcoming());
+    }catch (err) {
+        return res.status(500).json({
+            message: err.message
+        });
+    }
+});
+
+router.get('/popular', async (req,res) => {
+    try{
+        res.json(await moviesController.findPopular());
+    }catch (err) {
+        return res.status(500).json({
+            message: err.message
+        });
+    }
+});
+
+
 router.get('/searchid/:id', async (req,res) => {
     try {
         let id = req.params.id;
@@ -58,7 +79,16 @@ router.get('/actors/:name', async (req,res) => {
     }
 });
 
-
+router.post("/play", async (req, res) => {
+    try {
+      let movieId = req.body.movieId;
+      res.json(await moviesController.playTrailer(movieId));
+    } catch (err) {
+      return res.status(500).json({
+        mensaje: err.mensaje,
+      });
+    }
+  });
 
 
 module.exports = router;

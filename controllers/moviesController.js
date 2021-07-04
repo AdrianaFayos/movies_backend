@@ -9,6 +9,20 @@ class Movies {
 
     }
 
+    async findUpcoming() {
+
+        let res = await axios.get('https://api.themoviedb.org/3/movie/upcoming?api_key=210d6a5dd3f16419ce349c9f1b200d6d&language=en-US&page=1');
+        return res.data;
+
+    }
+
+    async findPopular() {
+
+        let res = await axios.get('https://api.themoviedb.org/3/movie/popular?api_key=210d6a5dd3f16419ce349c9f1b200d6d&language=en-US&page=1');
+        return res.data;
+
+    }
+
     async findMoviesById(id) {
         
         let res = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=210d6a5dd3f16419ce349c9f1b200d6d&language=en-US`);
@@ -31,7 +45,7 @@ class Movies {
 
         for (let i = 0 ; i < newArray.length ; i++) {
 
-            if (newArray[i].name == name){
+            if (newArray[i].name.toLowerCase()  == name.toLowerCase() ){
                 let id = newArray[i].id;
                 let res = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=210d6a5dd3f16419ce349c9f1b200d6d&with_genres=${id}`);
                 return res.data;
@@ -42,6 +56,13 @@ class Movies {
     async findByActor(name) {
         let res = await axios.get(`http://api.themoviedb.org/3/search/person?query=${name}&api_key=210d6a5dd3f16419ce349c9f1b200d6d`);
         return res.data;
+    }
+
+    async playTrailer(movieId){
+        let res = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=210d6a5dd3f16419ce349c9f1b200d6d&language=en-US`)
+        let trailer = "https://www.youtube.com/watch?v=" + res.data.results[0].key;
+    
+        return trailer;
     }
 
 }

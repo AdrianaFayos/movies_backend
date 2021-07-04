@@ -6,7 +6,7 @@ const admin = require('../middleware/admin')
 //CRUD
 
 // Endpoint de Perfil (R) -> GET
-router.post('/', admin,  async(req, res) => {
+router.get('/', admin,  async(req, res) => {
     try {
         res.json(await orderController.findAllOrders())
     } catch (err) {
@@ -16,10 +16,32 @@ router.post('/', admin,  async(req, res) => {
     }
 });
 
-router.post('/findbyid', authenticate, async (req, res) => {
+router.post('/findbyid', admin, async (req, res) => {
     try {
         let bodyData = req.body;
         res.json(await orderController.findOrderById(bodyData))
+    }catch (err) {
+        return res.status(500).json({
+            message: err.message
+        });
+    }
+});
+
+router.post('/findbyuser', authenticate, async (req, res) => {
+    try {
+        let bodyData = req.body;
+        res.json(await orderController.findOrderById(bodyData))
+    }catch (err) {
+        return res.status(500).json({
+            message: err.message
+        });
+    }
+});
+
+router.post('/findbymovie', authenticate, async (req, res) => {
+    try {
+        let bodyData = req.body;
+        res.json(await orderController.findOrderByMovieId(bodyData))
     }catch (err) {
         return res.status(500).json({
             message: err.message
@@ -49,7 +71,7 @@ router.put('/', authenticate, async (req,res) => {
 }
 });
 
-router.delete('/', authenticate, async (req,res) => {
+router.post('/delete', authenticate, async (req,res) => {
     try {
         const bodyData = req.body;
         res.json(await orderController.deleteOrder(bodyData))
@@ -71,7 +93,7 @@ router.put('/admin', admin, async (req,res) => {
 }
 });
 
-router.delete('/admin', admin, async (req,res) => {
+router.post('/deletebyadmin', admin, async (req,res) => {
     try {
         const bodyData = req.body;
         res.json(await orderController.deleteOrder(bodyData))
