@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "ba670af1a4b6be",
-    "password": "7789dc6d",
-    "database": "heroku_d1eb3c2cd1dca34",
-    "host": "eu-cdbr-west-01.cleardb.com",
+    "username": "root",
+    "password": "1234abcd",
+    "database": "moviesBackend",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
